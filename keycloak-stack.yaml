@@ -1,0 +1,85 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: keycloak-stack
+  labels:
+    app: keycloak-stack  # Add this line
+spec:
+  containers:
+  - name: postgresql
+    image: registry.redhat.io/rhel10/postgresql-16
+    env:
+    - name: POSTGRESQL_USER
+      value: "user"
+    - name: POSTGRESQL_PASSWORD
+      value: "pass"
+    - name: POSTGRESQL_DATABASE
+      value: "keycloak_db"
+    ports:
+    - containerPort: 5432
+      hostPort: 5432
+      protocol: TCP
+    
+  - name: keycloak
+    image: quay.io/keycloak/keycloak:26.4.2
+    args: ["start-dev"]
+    env:
+    - name: KC_BOOTSTRAP_ADMIN_USERNAME
+      value: "admin"
+    - name: KC_BOOTSTRAP_ADMIN_PASSWORD
+      value: "admin"
+    - name: KC_DB
+      value: "postgres"
+    - name: KC_DB_URL
+      value: "jdbc:postgresql://localhost:5432/keycloak_db"
+    - name: KC_DB_USERNAME
+      value: "user"
+    - name: KC_DB_PASSWORD
+      value: "pass"
+    ports:
+    - containerPort: 8080
+      hostPort: 8080
+      protocol: TCP
+    dependsOn:
+    - postgresql
+
+  # - name: conch
+  #   image: ghcr.io/isambard-sc/conch:0.1.4
+  #   args: [--config=/conch.toml]
+  #   env:
+  #   - name: RUST_LOG
+  #     value: "info"
+  #   volumeMounts:
+  #   - name: conch-config
+  #     mountPath: /conch.toml
+  #     subPath: conch.toml
+  #   - name: ssh-key
+  #     mountPath: /signing_key
+  #     subPath: ssh_signing_key
+  #   ports:
+  #   dependsOn:
+  #   - keycloak
+volumes:
+- name: conch-config
+  hostPath:
+    path: /Users/ak18001/code/keycloakal/conch/config.toml
+    type: File
+- name: ssh-key
+  hostPath:
+    path: /Users/ak18001/code/keycloakal/conch/ssh_signing_key
+    type: File
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: keycloak-stack-service
+spec:
+  selector:
+    app: keycloak-stack
+  ports:
+  - name: keycloak
+    port: 8080
+    targetPort: 8080
+  - name: postgresql
+    port: 5432
+    targetPort: 5432

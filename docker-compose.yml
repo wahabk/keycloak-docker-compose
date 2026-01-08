@@ -1,0 +1,47 @@
+services:
+  postgresql:
+    image: registry.redhat.io/rhel10/postgresql-16
+    environment:
+      POSTGRESQL_USER: "user"
+      POSTGRESQL_PASSWORD: "pass"
+      POSTGRESQL_DATABASE: "keycloak_db"
+    ports:
+      - 127.0.0.1:5432:5432
+    volumes:
+      - ./psql:/var/lib/pgsql/data/userdata:rw
+    restart: unless-stopped
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.4.2
+    command: ["start-dev", "--import-realm"]
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: "admin"
+      KC_BOOTSTRAP_ADMIN_PASSWORD: "admin"
+      KC_DB: "postgres"
+      KC_DB_URL: "jdbc:postgresql://postgresql:5432/keycloak_db"
+      KC_DB_USERNAME: "user"
+      KC_DB_PASSWORD: "pass"
+      KC_HTTP_HOST: "0.0.0.0"
+    ports:
+      - 127.0.0.1:8080:8080
+    depends_on:
+      - postgresql
+    restart: unless-stopped
+    volumes:
+      - ./keycloak-data/:/opt/keycloak/data:rw
+      - ./config/keycloak/extensions/keycloak-isambard-auth-plugin/target/keycloak-isambard-auth-plugin-0.1.jar:/opt/keycloak/providers/keycloak-isambard-auth-plugin-0.1.jar:ro
+      - ./config/keycloak/extensions/keycloak-tandc-plugin/target/keycloak-tandc-auth-plugin-0.2.jar:/opt/keycloak/providers/keycloak-tandc-auth-plugin-0.2.jar:ro
+
+  conch:
+    image: ghcr.io/isambard-sc/conch:0.3.5
+    command: ["--config=/conch.toml", "--port=9090"]
+    ports:
+      - 127.0.0.1:9090:9090
+    environment:
+      RUST_LOG: "info"
+    depends_on:
+      - keycloak
+    volumes:
+      - "./config/conch/conch.toml:/conch.toml:ro"
+      - "./config/conch/ssh_signing_key:/signing_key:ro"
+    restart: unless-stopped

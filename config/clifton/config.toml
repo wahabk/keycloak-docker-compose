@@ -1,0 +1,9 @@
+[sites.brics]
+ca_url = "https://ca.isambard.ac.uk/"
+
+default_site = "brics"
+
+write_config = false
+show_qr = false
+open_browser = false
+check_version = true
