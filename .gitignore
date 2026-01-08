@@ -1,1 +1,3 @@
 psql/*
+*/ssh_signing_key
+*/ssh_signing_key.pub
