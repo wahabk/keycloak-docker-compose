@@ -1,3 +1,11 @@
+# Keycloak docker compose
+
+This repository provides a test environment for integrating the following:
+
+- Keycloak
+- [Clifton](https://github.com/isambard-sc/clifton)
+- [Conch](https://github.com/isambard-sc/conch)
+
 # docker compose
 
 ```shell
@@ -6,16 +14,19 @@ docker compose up -d
 
 Then go to this [link](http://127.0.0.1:8080/realms/waldur/account)
 
-# Set up clifton:
+# Set up conch SSH signing key:
 
-Generate SSH signing key
+Generate SSH signing key for conch:
 
 ```
+cd config/conch/
 ssh-keygen -q -t ed25519 -f ssh_signing_key -C '' -N ''
 ```
 
-
 # Running with Podman
+
+I have also generated a minimal podman kube play manifest for testing:
+
 ## Start keycloak
 
 Launch https://www.keycloak.org/getting-started/getting-started-podman 
