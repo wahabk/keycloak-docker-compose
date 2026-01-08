@@ -14,7 +14,7 @@ docker compose up -d
 
 Then go to this [link](http://127.0.0.1:8080/realms/waldur/account)
 
-# Set up conch SSH signing key:
+# Set up conch SSH signing key and clifton auth:
 
 Generate SSH signing key for conch:
 
@@ -22,6 +22,13 @@ Generate SSH signing key for conch:
 cd config/conch/
 ssh-keygen -q -t ed25519 -f ssh_signing_key -C '' -N ''
 ```
+
+Then sign in with clifton using:
+
+```
+$ clifton auth --config-file=config/clifton/config.toml
+```
+
 
 # Running with Podman
 

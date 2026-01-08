@@ -1,5 +1,5 @@
 [sites.brics]
-ca_url = "https://ca.isambard.ac.uk/"
+ca_url = "http://127.0.0.1:9090/"
 
 default_site = "brics"
 

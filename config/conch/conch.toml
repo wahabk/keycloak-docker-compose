@@ -1,8 +1,14 @@
 signing_key_path = "/signing_key"
+issuer = "http://keycloak:8080/realms/waldur"
+client_id = "clifton"
 
-issuer = "https://keycloak.example.com/realms/example"
+extensions = ["permit-pty", "permit-agent-forwarding"]
 
 [platforms.service-one]
 alias = "s1.example"
 hostname = "s1.example.com"
 proxy_jump = "jump.example.com"
+
+[[mappers]]
+single = "email"
+
