@@ -29,8 +29,8 @@ services:
     restart: unless-stopped
     volumes:
       - ./keycloak-data/:/opt/keycloak/data:rw
-      # - ./config/keycloak/extensions/keycloak-isambard-auth-plugin/target/keycloak-isambard-auth-plugin-0.1.jar:/opt/keycloak/providers/keycloak-isambard-auth-plugin-0.1.jar:ro
-      # - ./config/keycloak/extensions/keycloak-tandc-plugin/target/keycloak-tandc-auth-plugin-0.2.jar:/opt/keycloak/providers/keycloak-tandc-auth-plugin-0.2.jar:ro
+      - ./config/keycloak/extensions/keycloak-isambard-auth-plugin/target/keycloak-isambard-auth-plugin-0.1.jar:/opt/keycloak/providers/keycloak-isambard-auth-plugin-0.1.jar:ro
+      - ./config/keycloak/extensions/keycloak-tandc-plugin/target/keycloak-tandc-auth-plugin-0.2.jar:/opt/keycloak/providers/keycloak-tandc-auth-plugin-0.2.jar:ro
 
   conch:
     image: ghcr.io/isambard-sc/conch:0.3.5

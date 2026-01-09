@@ -1,0 +1,6 @@
+uk/ac/isambard/keycloak/authentication/authenticators/browser/IsambardAuthenticatorFactory.class
+uk/ac/isambard/keycloak/authentication/authenticators/browser/IsambardAuthenticator.class
+uk/ac/isambard/keycloak/authentication/authenticators/browser/IsambardAuthenticator$1.class
+uk/ac/isambard/keycloak/authentication/authenticators/browser/IsambardAuthenticator$AuthorisationStatus.class
+uk/ac/isambard/keycloak/authentication/authenticators/browser/IsambardAuthenticator$ResourceInfo.class
+uk/ac/isambard/keycloak/authentication/authenticators/browser/IsambardAuthenticator$ProjectInfo.class

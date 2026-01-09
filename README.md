@@ -12,7 +12,7 @@ This repository provides a test environment for integrating the following:
 docker compose up -d
 ```
 
-Then go to this [link](http://127.0.0.1:8080/realms/waldur/account)
+Then go to this [link](http://keycloak:8080/realms/waldur/account)
 
 # Set up conch SSH signing key and clifton auth:
 

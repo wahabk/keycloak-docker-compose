@@ -1,0 +1,5 @@
+uk/ac/isambard/keycloak/authentication/authenticators/browser/IsambardTandC$AcceptedState.class
+uk/ac/isambard/keycloak/authentication/authenticators/browser/IsambardTandCFactory.class
+uk/ac/isambard/keycloak/authentication/authenticators/browser/IsambardTandC$TandCInfo.class
+uk/ac/isambard/keycloak/authentication/authenticators/browser/IsambardTandC$TandCItem.class
+uk/ac/isambard/keycloak/authentication/authenticators/browser/IsambardTandC.class
