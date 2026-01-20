@@ -1,14 +1,37 @@
 signing_key_path = "/signing_key"
 issuer = "http://keycloak:8080/realms/waldur"
 client_id = "clifton"
+log_format = "json"
 
-extensions = ["permit-pty", "permit-agent-forwarding"]
+extensions = ["permit-pty", "permit-agent-forwarding", "permit-port-forwarding"]
 
-[platforms.service-one]
-alias = "s1.example"
-hostname = "s1.example.com"
-proxy_jump = "jump.example.com"
+# internal_strip_portal_from_project = true
+
+[platforms.brics.aip1.clusters.shared]
+alias = "aip1.isambard"
+hostname = "ai-p1.access.isambard.ac.uk"
+proxy_jump = "ai.login.isambard.ac.uk"
+
+[platforms.brics.aip2.clusters.shared]
+alias = "aip2.isambard"
+hostname = "ai-p2.access.isambard.ac.uk"
+proxy_jump = "ai.login.isambard.ac.uk"
+
+[platforms.brics.i3.clusters.shared]
+alias = "3.isambard"
+hostname = "i3.access.isambard.ac.uk"
+proxy_jump = "ai.login.isambard.ac.uk"
+
+[platforms.brics.i3.clusters.macs]
+alias = "macs3.isambard"
+hostname = "i3macs.access.isambard.ac.uk"
+proxy_jump = "ai.login.isambard.ac.uk"
+
+[platforms.brics.dl.clusters.bc5]
+alias = "bc5.digital-labs"
+hostname = "digital-labs.bristol.ac.uk"
 
 [[mappers]]
 single = "email"
-
+project_infra = "v1"
+  
