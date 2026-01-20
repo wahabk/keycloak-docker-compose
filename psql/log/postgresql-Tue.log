@@ -3,3 +3,55 @@
 2026-01-20 10:03:03.176 UTC [46] LOG:  checkpoint complete: wrote 9 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.843 s, sync=0.004 s, total=0.878 s; sync files=8, longest=0.002 s, average=0.001 s; distance=17 kB, estimate=75 kB; lsn=0/22BBD58, redo lsn=0/22BBD20
 2026-01-20 10:08:02.236 UTC [46] LOG:  checkpoint starting: time
 2026-01-20 10:08:03.391 UTC [46] LOG:  checkpoint complete: wrote 12 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.140 s, sync=0.004 s, total=1.156 s; sync files=12, longest=0.002 s, average=0.001 s; distance=44 kB, estimate=72 kB; lsn=0/22C7088, redo lsn=0/22C7050
+2026-01-20 10:09:47.048 UTC [1] LOG:  received smart shutdown request
+2026-01-20 10:09:47.051 UTC [1] LOG:  background worker "logical replication launcher" (PID 51) exited with exit code 1
+2026-01-20 10:09:47.053 UTC [46] LOG:  shutting down
+2026-01-20 10:09:47.054 UTC [46] LOG:  checkpoint starting: shutdown immediate
+2026-01-20 10:09:47.066 UTC [46] LOG:  checkpoint complete: wrote 11 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.006 s, sync=0.004 s, total=0.014 s; sync files=6, longest=0.003 s, average=0.001 s; distance=46 kB, estimate=70 kB; lsn=0/22D2BB8, redo lsn=0/22D2BB8
+2026-01-20 10:09:47.069 UTC [1] LOG:  database system is shut down
+2026-01-20 10:09:51.595 UTC [28] LOG:  starting PostgreSQL 16.10 on aarch64-redhat-linux-gnu, compiled by gcc (GCC) 14.3.1 20250617 (Red Hat 14.3.1-2), 64-bit
+2026-01-20 10:09:51.597 UTC [28] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-01-20 10:09:51.603 UTC [28] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-01-20 10:09:51.844 UTC [32] LOG:  database system was shut down at 2026-01-20 10:09:47 UTC
+2026-01-20 10:09:51.861 UTC [28] LOG:  database system is ready to accept connections
+2026-01-20 10:09:52.058 UTC [28] LOG:  received fast shutdown request
+2026-01-20 10:09:52.058 UTC [28] LOG:  aborting any active transactions
+2026-01-20 10:09:52.059 UTC [28] LOG:  background worker "logical replication launcher" (PID 35) exited with exit code 1
+2026-01-20 10:09:52.059 UTC [30] LOG:  shutting down
+2026-01-20 10:09:52.060 UTC [30] LOG:  checkpoint starting: shutdown immediate
+2026-01-20 10:09:52.072 UTC [30] LOG:  checkpoint complete: wrote 4 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.004 s, total=0.013 s; sync files=3, longest=0.003 s, average=0.002 s; distance=4 kB, estimate=4 kB; lsn=0/22D3F10, redo lsn=0/22D3F10
+2026-01-20 10:09:52.075 UTC [28] LOG:  database system is shut down
+2026-01-20 10:09:52.184 UTC [1] LOG:  starting PostgreSQL 16.10 on aarch64-redhat-linux-gnu, compiled by gcc (GCC) 14.3.1 20250617 (Red Hat 14.3.1-2), 64-bit
+2026-01-20 10:09:52.184 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2026-01-20 10:09:52.184 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2026-01-20 10:09:52.199 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-01-20 10:09:52.219 UTC [1] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-01-20 10:09:52.238 UTC [48] LOG:  database system was shut down at 2026-01-20 10:09:52 UTC
+2026-01-20 10:09:52.259 UTC [1] LOG:  database system is ready to accept connections
+2026-01-20 10:14:52.237 UTC [46] LOG:  checkpoint starting: time
+2026-01-20 10:14:52.691 UTC [46] LOG:  checkpoint complete: wrote 7 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.428 s, sync=0.006 s, total=0.455 s; sync files=5, longest=0.003 s, average=0.002 s; distance=13 kB, estimate=13 kB; lsn=0/22D76D0, redo lsn=0/22D7698
+2026-01-20 10:23:43.992 UTC [1] LOG:  received smart shutdown request
+2026-01-20 10:23:43.995 UTC [1] LOG:  background worker "logical replication launcher" (PID 51) exited with exit code 1
+2026-01-20 10:23:43.995 UTC [46] LOG:  shutting down
+2026-01-20 10:23:43.996 UTC [46] LOG:  checkpoint starting: shutdown immediate
+2026-01-20 10:23:44.012 UTC [46] LOG:  checkpoint complete: wrote 0 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.001 s, total=0.018 s; sync files=0, longest=0.000 s, average=0.000 s; distance=0 kB, estimate=12 kB; lsn=0/22D7780, redo lsn=0/22D7780
+2026-01-20 10:23:44.015 UTC [1] LOG:  database system is shut down
+2026-01-20 10:23:47.863 UTC [28] LOG:  starting PostgreSQL 16.10 on aarch64-redhat-linux-gnu, compiled by gcc (GCC) 14.3.1 20250617 (Red Hat 14.3.1-2), 64-bit
+2026-01-20 10:23:47.864 UTC [28] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-01-20 10:23:47.869 UTC [28] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-01-20 10:23:47.879 UTC [32] LOG:  database system was shut down at 2026-01-20 10:23:44 UTC
+2026-01-20 10:23:47.888 UTC [28] LOG:  database system is ready to accept connections
+2026-01-20 10:23:48.010 UTC [28] LOG:  received fast shutdown request
+2026-01-20 10:23:48.013 UTC [28] LOG:  aborting any active transactions
+2026-01-20 10:23:48.014 UTC [28] LOG:  background worker "logical replication launcher" (PID 35) exited with exit code 1
+2026-01-20 10:23:48.014 UTC [30] LOG:  shutting down
+2026-01-20 10:23:48.016 UTC [30] LOG:  checkpoint starting: shutdown immediate
+2026-01-20 10:23:48.048 UTC [30] LOG:  checkpoint complete: wrote 4 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.012 s, total=0.034 s; sync files=3, longest=0.006 s, average=0.004 s; distance=5 kB, estimate=5 kB; lsn=0/22D8BF0, redo lsn=0/22D8BF0
+2026-01-20 10:23:48.052 UTC [28] LOG:  database system is shut down
+2026-01-20 10:23:48.137 UTC [1] LOG:  starting PostgreSQL 16.10 on aarch64-redhat-linux-gnu, compiled by gcc (GCC) 14.3.1 20250617 (Red Hat 14.3.1-2), 64-bit
+2026-01-20 10:23:48.137 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2026-01-20 10:23:48.137 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2026-01-20 10:23:48.147 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-01-20 10:23:48.153 UTC [1] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2026-01-20 10:23:48.164 UTC [48] LOG:  database system was shut down at 2026-01-20 10:23:48 UTC
+2026-01-20 10:23:48.175 UTC [1] LOG:  database system is ready to accept connections
