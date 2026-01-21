@@ -57,3 +57,5 @@
 2026-01-20 10:23:48.175 UTC [1] LOG:  database system is ready to accept connections
 2026-01-20 10:28:48.271 UTC [46] LOG:  checkpoint starting: time
 2026-01-20 10:28:51.738 UTC [46] LOG:  checkpoint complete: wrote 36 buffers (0.9%); 0 WAL file(s) added, 0 removed, 0 recycled; write=3.435 s, sync=0.005 s, total=3.468 s; sync files=26, longest=0.001 s, average=0.001 s; distance=137 kB, estimate=137 kB; lsn=0/22FB0E0, redo lsn=0/22FB0A8
+2026-01-20 12:15:29.448 UTC [46] LOG:  checkpoint starting: time
+2026-01-20 12:15:30.024 UTC [46] LOG:  checkpoint complete: wrote 6 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.543 s, sync=0.002 s, total=0.577 s; sync files=4, longest=0.001 s, average=0.001 s; distance=25 kB, estimate=125 kB; lsn=0/2301630, redo lsn=0/23015F8

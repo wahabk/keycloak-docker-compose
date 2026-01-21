@@ -1,0 +1,4 @@
+uk/ac/isambard/keycloak/protocol/oidc/mappers/IsambardProtocolMapper$AuthorisationStatus.class
+uk/ac/isambard/keycloak/protocol/oidc/mappers/IsambardProtocolMapper.class
+uk/ac/isambard/keycloak/protocol/oidc/mappers/IsambardProtocolMapper$ProjectInfo.class
+uk/ac/isambard/keycloak/protocol/oidc/mappers/IsambardProtocolMapper$ResourceInfo.class
