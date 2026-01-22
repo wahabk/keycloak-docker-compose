@@ -26,7 +26,7 @@ import java.util.List;
  * OIDC Protocol Mapper that fetches user project and resource information from the Waldur API and adds it as claims to tokens at issuance time.
  * 
  * This mapper is based on Keycloak's built-in protocol mappers (e.g. UserAttributeMapper, AudienceProtocolMapper) and follows the same pattern of extending AbstractOIDCProtocolMapper. 
- * Authenticator blocks login if user not authorised; mapper falls back to cached attributes - should this be changed?
+ * Authenticator blocks login if user not authorised; mapper falls back to cached attributes as user is already logged in
  */
 public class IsambardProtocolMapper extends AbstractOIDCProtocolMapper 
         implements OIDCAccessTokenMapper, OIDCIDTokenMapper, UserInfoTokenMapper {
