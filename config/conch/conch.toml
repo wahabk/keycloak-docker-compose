@@ -1,5 +1,7 @@
 signing_key_path = "/signing_key"
 issuer = "http://keycloak:8080/realms/waldur"
+# optionally test with dev-kc
+# issuer = "https://keycloak-dev.isambard.ac.uk/realms/isambard"
 client_id = "clifton"
 log_format = "json"
 
