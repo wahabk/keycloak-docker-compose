@@ -177,7 +177,13 @@ public class IsambardProtocolMapper extends AbstractOIDCProtocolMapper
                 token.getOtherClaims().put("short_name", cachedShortName);
             }
             if (cachedProjects != null) {
-                token.getOtherClaims().put("projects", cachedProjects);
+                try {
+                    Object projectsObj = JsonSerialization.readValue(cachedProjects, Object.class);
+                    token.getOtherClaims().put("projects", projectsObj);
+                } catch (Exception e) {
+                    logger.warn("Error parsing cached projects (invalid JSON): " + e.getMessage());
+                    logger.warn("Cached projects value: " + cachedProjects);
+                }
             }
             return;
         }
@@ -249,21 +255,15 @@ public class IsambardProtocolMapper extends AbstractOIDCProtocolMapper
 
             // Add claims to the token
             token.getOtherClaims().put("short_name", short_name);
-            token.getOtherClaims().put("projects", projects_json);
+            token.getOtherClaims().put("projects", projects);
             
         } else {
             // User is not active - use cached attributes if available
             logger.warn("[TOKEN MAPPER] " + email + " is not active (status:  " + access.status + ")");
             
-            String cachedShortName = user.getFirstAttribute("short_name");
-            String cachedProjects = user.getFirstAttribute("projects");
-            
-            if (cachedShortName != null) {
-                token.getOtherClaims().put("short_name", cachedShortName);
-            }
-            if (cachedProjects != null) {
-                token.getOtherClaims().put("projects", cachedProjects);
-            }
+            // clear the custom attributes for this user
+            user.removeAttribute("short_name");
+            user.removeAttribute("projects");
         }
     }
 }
