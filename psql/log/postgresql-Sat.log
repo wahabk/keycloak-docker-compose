@@ -1,5 +1,0 @@
-2026-02-16 11:17:33.839 UTC [1] LOG:  background worker "logical replication launcher" (PID 51) exited with exit code 1
-2026-02-16 11:17:33.840 UTC [46] LOG:  shutting down
-2026-02-16 11:17:33.844 UTC [46] LOG:  checkpoint starting: shutdown immediate
-2026-02-16 11:17:33.873 UTC [46] LOG:  checkpoint complete: wrote 6 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.016 s, sync=0.001 s, total=0.032 s; sync files=4, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=72 kB; lsn=0/25AC098, redo lsn=0/25AC098
-2026-02-16 11:17:33.880 UTC [1] LOG:  database system is shut down
