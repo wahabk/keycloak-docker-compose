@@ -1,9 +1,11 @@
-[sites.brics]
-ca_url = "http://127.0.0.1:9090/"
-
-default_site = "brics"
-
 write_config = false
-show_qr = false
+show_qr = true
 open_browser = false
 check_version = true
+
+[sites.brics]
+ca_url = "http://127.0.0.1:9090/"
+# ca_url = "https://ca-dev.isambard.ac.uk/"
+# ca_url = "https://ca-test.isambard.ac.uk/"
+
+default_site = "brics"

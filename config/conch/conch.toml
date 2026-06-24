@@ -5,7 +5,7 @@ issuer = "http://keycloak:8080/realms/waldur"
 client_id = "clifton"
 log_format = "json"
 
-extensions = ["permit-pty", "permit-agent-forwarding", "permit-port-forwarding"]
+extensions = ["permit-pty", "permit-agent-forwarding", "permit-port-forwarding", "permit-X11-forwarding"]
 
 internal_strip_portal_from_project = true
 
