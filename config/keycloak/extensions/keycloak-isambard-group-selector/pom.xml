@@ -5,10 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>uk.ac.isambard.keycloak</groupId>
-  <artifactId>keycloak-isambard-auth-plugin</artifactId>
+  <artifactId>keycloak-isambard-group-selector</artifactId>
   <version>0.1</version>
 
-  <name>keycloak-isambard-auth-plugin</name>
+  <name>keycloak-isambard-group-selector</name>
   <url>https://keycloak.isambard.ac.uk</url>
 
   <properties>

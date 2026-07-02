@@ -32,6 +32,7 @@ services:
       - ./config/keycloak/extensions/keycloak-isambard-auth-plugin/target/keycloak-isambard-auth-plugin-0.1.jar:/opt/keycloak/providers/keycloak-isambard-auth-plugin-0.1.jar:ro
       - ./config/keycloak/extensions/keycloak-tandc-plugin/target/keycloak-tandc-auth-plugin-0.2.jar:/opt/keycloak/providers/keycloak-tandc-auth-plugin-0.2.jar:ro
       - ./config/keycloak/extensions/keycloak-isambard-protocol-mapper/target/keycloak-isambard-protocol-mapper-0.1.jar:/opt/keycloak/providers/keycloak-isambard-protocol-mapper-0.1.jar:ro
+      - ./config/keycloak/extensions/keycloak-brics-project-group-mapper/target/keycloak-brics-project-group-mapper-0.1.jar:/opt/keycloak/providers/keycloak-brics-project-group-mapper-0.1.jar:ro
 
 
   conch:

@@ -1,6 +1,6 @@
-# Keycloak auth plugin
+# Keycloak auth plugin
 
-## Dependencies
+## Dependencies
 
 * JDK
 * maven

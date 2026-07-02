@@ -56,6 +56,9 @@ public class BricsProjectGroupMapper extends AbstractOIDCProtocolMapper
         public String reason = "";
     }
 
+    // Keep in sync with SelectActiveGroupRequiredAction in keycloak-isambard-group-selector.
+    private static final String SELECTED_GROUP_ATTRIBUTE_PREFIX = "selected-group:";
+
     private static final List<ProviderConfigProperty> configProperties = new ArrayList<>();
 
     static {
@@ -183,10 +186,22 @@ public class BricsProjectGroupMapper extends AbstractOIDCProtocolMapper
             for (Map.Entry<String, ProjectInfo> entry : access.projects.entrySet()) {
                 groups.add(entry.getKey());
             }
+
+            // If the user has selected a single active group for this client (see
+            // keycloak-isambard-group-selector), only return that one. Non-interactive
+            // flows (service accounts, direct grant) never make a selection, so they
+            // keep seeing every group, as before.
+            String clientId = clientSessionCtx.getClientSession().getClient().getClientId();
+            String selectedGroup = user.getFirstAttribute(SELECTED_GROUP_ATTRIBUTE_PREFIX + clientId);
+
+            if (selectedGroup != null && groups.contains(selectedGroup)) {
+                groups = new ArrayList<>(Arrays.asList(selectedGroup));
+            }
+
             logger.info("[GROUP MAPPER] " + email + " fetched with projects " + groups);
 
             token.getOtherClaims().put("groups", groups);
-            
+
         } else {
             // User is not active - use cached attributes if available
             logger.warn("[GROUP MAPPER] " + email + " is not active (status:  " + access.status + ")");

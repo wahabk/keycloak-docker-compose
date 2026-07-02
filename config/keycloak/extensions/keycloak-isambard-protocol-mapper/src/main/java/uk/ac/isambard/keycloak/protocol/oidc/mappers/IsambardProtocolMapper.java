@@ -54,6 +54,9 @@ public class IsambardProtocolMapper extends AbstractOIDCProtocolMapper
         public String reason = "";
     }
 
+    // Keep in sync with SelectActiveGroupRequiredAction in keycloak-isambard-group-selector.
+    private static final String SELECTED_GROUP_ATTRIBUTE_PREFIX = "selected-group:";
+
     private static final List<ProviderConfigProperty> configProperties = new ArrayList<>();
 
     static {
@@ -178,7 +181,16 @@ public class IsambardProtocolMapper extends AbstractOIDCProtocolMapper
             }
             if (cachedProjects != null) {
                 try {
-                    Object projectsObj = JsonSerialization.readValue(cachedProjects, Object.class);
+                    Map<String, Object> projectsObj = JsonSerialization.readValue(cachedProjects, Map.class);
+                    String clientId = clientSessionCtx.getClientSession().getClient().getClientId();
+                    String selectedGroup = user.getFirstAttribute(SELECTED_GROUP_ATTRIBUTE_PREFIX + clientId);
+
+                    if (selectedGroup != null && projectsObj.containsKey(selectedGroup)) {
+                        Map<String, Object> filtered = new HashMap<>();
+                        filtered.put(selectedGroup, projectsObj.get(selectedGroup));
+                        projectsObj = filtered;
+                    }
+
                     token.getOtherClaims().put("projects", projectsObj);
                 } catch (Exception e) {
                     logger.warn("Error parsing cached projects (invalid JSON): " + e.getMessage());
@@ -253,10 +265,25 @@ public class IsambardProtocolMapper extends AbstractOIDCProtocolMapper
                 user.setSingleAttribute("projects", projects_json);
             }
 
+            // If the user has selected a single active group for this client (see
+            // keycloak-isambard-group-selector), only return that one in the token.
+            // The full set stays cached in the "projects" attribute above, since that's
+            // what the required action validates selections against. Non-interactive
+            // flows (service accounts, direct grant) never make a selection, so they
+            // keep seeing every project, as before.
+            HashMap<String, ProjectInfo> tokenProjects = projects;
+            String clientId = clientSessionCtx.getClientSession().getClient().getClientId();
+            String selectedGroup = user.getFirstAttribute(SELECTED_GROUP_ATTRIBUTE_PREFIX + clientId);
+
+            if (selectedGroup != null && projects.containsKey(selectedGroup)) {
+                tokenProjects = new HashMap<>();
+                tokenProjects.put(selectedGroup, projects.get(selectedGroup));
+            }
+
             // Add claims to the token
             token.getOtherClaims().put("short_name", short_name);
-            token.getOtherClaims().put("projects", projects);
-            
+            token.getOtherClaims().put("projects", tokenProjects);
+
         } else {
             // User is not active - use cached attributes if available
             logger.warn("[TOKEN MAPPER] " + email + " is not active (status:  " + access.status + ")");
