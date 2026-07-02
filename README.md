@@ -15,7 +15,7 @@ docker compose up -d
 > [!IMPORTANT]
 > You must alias `hostname` to `keycloak` on your local machine so that your browser sees the same URI as the containers.
 
-Then go to this link: http://keycloak:8080/realms/waldur/account)
+Then go to this link: http://keycloak:8080/realms/master/account)
 
 # Making Your Docker Network Reachable In MacOS
 

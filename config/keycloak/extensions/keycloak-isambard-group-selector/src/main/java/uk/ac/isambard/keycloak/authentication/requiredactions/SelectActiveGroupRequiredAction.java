@@ -142,15 +142,19 @@ public class SelectActiveGroupRequiredAction implements RequiredActionProvider, 
         return InitiatedActionSupport.SUPPORTED;
     }
 
-    // Set to "true" on a client (Advanced > Attributes) to opt that client into
-    // group selection. Absent/anything else means the client keeps seeing every
-    // group/project, unchanged - this is what lets us enable the required action
-    // realm-wide (a realm-level toggle is all Keycloak offers) while only a
-    // subset of clients actually trigger the picker.
-    private static final String CLIENT_ENABLED_ATTRIBUTE = "group-selector.enabled";
+    // Assign this as a Default client scope (Clients > <client> > Client scopes
+    // > Add client scope) to opt a client into group selection. It's an empty
+    // scope used purely as a per-client marker - no protocol mappers needed on
+    // it. Clients without it keep seeing every group/project, unchanged - this
+    // is what lets us enable the required action realm-wide (a realm-level
+    // toggle is all Keycloak offers for required actions) while only a subset
+    // of clients actually trigger the picker. Client attributes would do the
+    // same job, but the Admin Console has no UI to set them (only the Admin
+    // REST API does), whereas client scope assignment is a normal UI flow.
+    private static final String CLIENT_ENABLED_SCOPE = "group-selector";
 
     private static boolean isEnabledForClient(ClientModel client) {
-        return Boolean.parseBoolean(client.getAttribute(CLIENT_ENABLED_ATTRIBUTE));
+        return client.getClientScopes(true).containsKey(CLIENT_ENABLED_SCOPE);
     }
 
     private static String attributeKey(ClientModel client) {

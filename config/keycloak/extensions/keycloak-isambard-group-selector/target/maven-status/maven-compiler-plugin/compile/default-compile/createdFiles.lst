@@ -1,0 +1,4 @@
+uk/ac/isambard/keycloak/authentication/requiredactions/SelectActiveGroupRequiredAction.class
+uk/ac/isambard/keycloak/authentication/requiredactions/SelectActiveGroupRequiredAction$ProjectInfo.class
+uk/ac/isambard/keycloak/authentication/requiredactions/SelectActiveGroupRequiredAction$ResourceInfo.class
+uk/ac/isambard/keycloak/authentication/requiredactions/SelectActiveGroupRequiredAction$AuthorisationStatus.class
